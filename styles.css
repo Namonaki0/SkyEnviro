@@ -1,8 +1,35 @@
-body {
-  background: #2637AB;
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-i {
+body {
+  background: #2637AB;
+  display: -ms-grid;
+  display: grid;
+  height: 100vh;
+  place-content: center;
   color: white;
+  font-family: "Playfair Display", sans-serif;
+}
+
+#output {
+  text-align: center;
+}
+
+#output h1, #output h2 {
+  font-weight: 100;
+}
+
+#output .min-max-temps {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+  width: 250px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 /*# sourceMappingURL=styles.css.map */

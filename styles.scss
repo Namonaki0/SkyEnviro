@@ -1,7 +1,33 @@
-body {
-    background: #2637AB;
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+
+$font-primary: "Playfair Display", sans-serif;
+
+* {
+    box-sizing: border-box;
 }
 
-i {
+body {
+    background: #2637AB;
+    display: grid;
+    height: 100vh;
+    place-content: center;
     color: white;
+    font-family: $font-primary;
 }
+
+#output {
+    text-align: center;
+
+    h1, h2 {
+        font-weight: 100;
+    }
+
+    .min-max-temps {
+        display: flex;
+        margin-top: 10px;
+        width: 250px;
+        justify-content: space-evenly;
+    }
+
+}
+
