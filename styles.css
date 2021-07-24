@@ -14,25 +14,53 @@ body {
   color: white;
   font-family: "Playfair Display", sans-serif;
   position: relative;
-  -webkit-transition: all 120ms linear infinite;
-  transition: all 120ms linear infinite;
   overflow: hidden;
 }
 
 body::before {
   content: "";
-  display: block;
+  display: table-cell;
   width: 600px;
   aspect-ratio: 1;
   z-index: -1;
   background: #1630dbe5;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
+  -webkit-animation: bg-loop 60s linear infinite;
+          animation: bg-loop 60s linear infinite;
   position: absolute;
+}
+
+@-webkit-keyframes bg-loop {
+  0% {
+    -webkit-transform: rotate(0%);
+            transform: rotate(0%);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes bg-loop {
+  0% {
+    -webkit-transform: rotate(0%);
+            transform: rotate(0%);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 #output {
   text-align: center;
+}
+
+#output h1 {
+  font-size: 32px;
+}
+
+#output h2 {
+  font-size: 20px;
 }
 
 #output h1, #output h2 {

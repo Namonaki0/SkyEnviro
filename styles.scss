@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
 
 $font-primary: "Playfair Display", sans-serif;
+$font-size-h1: 32px;
+$font-size-h2: 20px;
+
+//? MOBILE VERSION
 
 * {
     box-sizing: border-box;
@@ -9,33 +13,50 @@ $font-primary: "Playfair Display", sans-serif;
 }
 
 body {
-    // background: #2637AB;
-    // background: linear-gradient(to bottom right, #2637AB 50%, #182367 50%);
     display: grid;
     height: 100vh;
     place-content: center;
     color: white;
     font-family: $font-primary;
     position: relative;
-    transition: all 120ms linear infinite;
     overflow: hidden;
 }
 
 body::before {
     content: "";
-    display: block;
+    display: table-cell;
     width: 600px;
     aspect-ratio: 1;
     z-index: -1;
     background: #1630dbe5;
-    transform: rotate(45deg);
+    animation: bg-loop 60s linear infinite;
     position: absolute;
+
+    @keyframes bg-loop {
+        0% {
+            transform: rotate(0%);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
 }
+
+
 
 #output {
     text-align: center;
 
-    h1, h2   {
+    h1   {      
+        font-size:$font-size-h1;
+    }
+
+    h2   {
+        font-size:$font-size-h2;
+    }
+
+    h1, h2 {
         font-weight: 100;
     }
 
