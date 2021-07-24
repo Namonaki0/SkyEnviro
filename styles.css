@@ -2,16 +2,33 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: #2637AB;
   display: -ms-grid;
   display: grid;
   height: 100vh;
   place-content: center;
   color: white;
   font-family: "Playfair Display", sans-serif;
+  position: relative;
+  -webkit-transition: all 120ms linear infinite;
+  transition: all 120ms linear infinite;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  display: block;
+  width: 600px;
+  aspect-ratio: 1;
+  z-index: -1;
+  background: #1630dbe5;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  position: absolute;
 }
 
 #output {

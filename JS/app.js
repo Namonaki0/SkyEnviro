@@ -4,7 +4,7 @@ const key = apiKey;
 
 async function fetchCity() {
   const api = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=Lisbon&appid=${key}`
+    `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${key}`
   );
   const data = await api.json();
 
@@ -22,8 +22,6 @@ async function fetchCity() {
       <div><span>min:</span> ${result.list[0].main.temp_min}&deg;</div> 
       <div><span>max:</span> ${result.list[0].main.temp_max}&deg;</div> 
     </div>
-    
-    
     `;
 
   console.log(result);

@@ -4,21 +4,38 @@ $font-primary: "Playfair Display", sans-serif;
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background: #2637AB;
+    // background: #2637AB;
+    // background: linear-gradient(to bottom right, #2637AB 50%, #182367 50%);
     display: grid;
     height: 100vh;
     place-content: center;
     color: white;
     font-family: $font-primary;
+    position: relative;
+    transition: all 120ms linear infinite;
+    overflow: hidden;
+}
+
+body::before {
+    content: "";
+    display: block;
+    width: 600px;
+    aspect-ratio: 1;
+    z-index: -1;
+    background: #1630dbe5;
+    transform: rotate(45deg);
+    position: absolute;
 }
 
 #output {
     text-align: center;
 
-    h1, h2 {
+    h1, h2   {
         font-weight: 100;
     }
 
