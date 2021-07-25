@@ -15,17 +15,18 @@ $font-size-text: 18px;
 
 body {
     display: grid;
-    height: 100vh;
+    height: 80vh;
     place-content: center;
     color: white;
-    // background: #1630dbe5;
     font-family: $font-primary;
     position: relative;
     overflow: hidden;
+    // background: #1630dbe5;
 }
 
 html {
     overflow: hidden;
+    scroll-behavior: smooth;
 }
 
 body::before {
@@ -35,19 +36,21 @@ body::before {
     aspect-ratio: 1;
     z-index: -1;
     background: #1630dbe5;
-    animation: bg-loop 60s linear infinite;
+    animation: bgloop 60s linear infinite;
     position: absolute;
 
-    @keyframes bg-loop {
+    @keyframes bgloop {
         0% {
-            transform: rotate(0%);
+            -webkit-transform: rotate(0%);
         }
 
         100% {
-            transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
         }
     }
 }
+
+
 
 #output {
     text-align: center;
@@ -68,24 +71,25 @@ body::before {
         display: -webkit-box;
         position: absolute;
         left: 0;
-        bottom: 15%;
+        bottom: 10%;
         justify-content: space-evenly;
         border-top: 1px solid rgba(192, 192, 192, 0.171);
         border-bottom: 1px solid rgba(192, 192, 192, 0.171);
-        // margin: 30px;
         overflow-x: auto;
+        overflow-y: hidden;
         width: 100%;
-        padding: 0 0 0 10px;
+        padding: 0 10px;
+
+        span {
+            margin-left: 15px;
+        }
 
         div {
             height: 100px;
-            width: 180px;
-            line-height: 110px;
+            width: max-content;
+            line-height: 100px;
             font-size: $font-size-text;
             text-align: center;
-            // margin: 0 20px;
-            margin-left: auto;
-            margin-right: auto;
             padding: 0;
         }
     }

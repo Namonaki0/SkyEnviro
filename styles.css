@@ -9,7 +9,7 @@
 body {
   display: -ms-grid;
   display: grid;
-  height: 100vh;
+  height: 80vh;
   place-content: center;
   color: white;
   font-family: "Playfair Display", sans-serif;
@@ -19,6 +19,7 @@ body {
 
 html {
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 body::before {
@@ -28,30 +29,26 @@ body::before {
   aspect-ratio: 1;
   z-index: -1;
   background: #1630dbe5;
-  -webkit-animation: bg-loop 60s linear infinite;
-          animation: bg-loop 60s linear infinite;
+  -webkit-animation: bgloop 60s linear infinite;
+          animation: bgloop 60s linear infinite;
   position: absolute;
 }
 
-@-webkit-keyframes bg-loop {
+@-webkit-keyframes bgloop {
   0% {
     -webkit-transform: rotate(0%);
-            transform: rotate(0%);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
   }
 }
 
-@keyframes bg-loop {
+@keyframes bgloop {
   0% {
     -webkit-transform: rotate(0%);
-            transform: rotate(0%);
   }
   100% {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
   }
 }
 
@@ -75,25 +72,30 @@ body::before {
   display: -webkit-box;
   position: absolute;
   left: 0;
-  bottom: 15%;
+  bottom: 10%;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   border-top: 1px solid rgba(192, 192, 192, 0.171);
   border-bottom: 1px solid rgba(192, 192, 192, 0.171);
   overflow-x: auto;
+  overflow-y: hidden;
   width: 100%;
-  padding: 0 0 0 10px;
+  padding: 0 10px;
+}
+
+#output .temps-options span {
+  margin-left: 15px;
 }
 
 #output .temps-options div {
   height: 100px;
-  width: 180px;
-  line-height: 110px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  line-height: 100px;
   font-size: 18px;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
   padding: 0;
 }
 
