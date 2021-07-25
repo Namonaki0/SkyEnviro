@@ -12,10 +12,47 @@ body {
   height: 100vh;
   place-content: center;
   color: white;
-  background: #1630dbe5;
   font-family: "Playfair Display", sans-serif;
   position: relative;
   overflow: hidden;
+}
+
+html {
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  display: table-cell;
+  width: 1000px;
+  aspect-ratio: 1;
+  z-index: -1;
+  background: #1630dbe5;
+  -webkit-animation: bg-loop 60s linear infinite;
+          animation: bg-loop 60s linear infinite;
+  position: absolute;
+}
+
+@-webkit-keyframes bg-loop {
+  0% {
+    -webkit-transform: rotate(0%);
+            transform: rotate(0%);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes bg-loop {
+  0% {
+    -webkit-transform: rotate(0%);
+            transform: rotate(0%);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 #output {
@@ -38,26 +75,29 @@ body {
   display: -webkit-box;
   position: absolute;
   left: 0;
+  bottom: 15%;
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  outline: 1px solid rgba(192, 192, 192, 0.171);
-  margin: 30px;
+  border-top: 1px solid rgba(192, 192, 192, 0.171);
+  border-bottom: 1px solid rgba(192, 192, 192, 0.171);
   overflow-x: auto;
-  width: 700px;
-}
-
-#output .temps-options -webkit-scrollbar {
-  width: 0px;
+  width: 100%;
+  padding: 0 0 0 10px;
 }
 
 #output .temps-options div {
   height: 100px;
-  width: 150px;
-  line-height: 100px;
+  width: 180px;
+  line-height: 110px;
   font-size: 18px;
   text-align: center;
-  margin: 0 20px;
   margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+#output .temps-options::-webkit-scrollbar {
+  width: 0;
 }
 /*# sourceMappingURL=styles.css.map */

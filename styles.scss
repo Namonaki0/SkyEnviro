@@ -18,32 +18,36 @@ body {
     height: 100vh;
     place-content: center;
     color: white;
-    background: #1630dbe5;
+    // background: #1630dbe5;
     font-family: $font-primary;
     position: relative;
     overflow: hidden;
 }
 
-// body::before {
-//     content: "";
-//     display: table-cell;
-//     width: 600px;
-//     aspect-ratio: 1;
-//     z-index: -1;
-//     background: #1630dbe5;
-//     animation: bg-loop 60s linear infinite;
-//     position: absolute;
+html {
+    overflow: hidden;
+}
 
-//     @keyframes bg-loop {
-//         0% {
-//             transform: rotate(0%);
-//         }
+body::before {
+    content: "";
+    display: table-cell;
+    width: 1000px;
+    aspect-ratio: 1;
+    z-index: -1;
+    background: #1630dbe5;
+    animation: bg-loop 60s linear infinite;
+    position: absolute;
 
-//         100% {
-//             transform: rotate(360deg);
-//         }
-//     }
-// }
+    @keyframes bg-loop {
+        0% {
+            transform: rotate(0%);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}
 
 #output {
     text-align: center;
@@ -64,27 +68,30 @@ body {
         display: -webkit-box;
         position: absolute;
         left: 0;
+        bottom: 15%;
         justify-content: space-evenly;
-        outline: 1px solid rgba(192, 192, 192, 0.171);
-        margin: 30px;
+        border-top: 1px solid rgba(192, 192, 192, 0.171);
+        border-bottom: 1px solid rgba(192, 192, 192, 0.171);
+        // margin: 30px;
         overflow-x: auto;
-        width: 700px;
-
-        -webkit-scrollbar {
-            width: 0px;
-        }
+        width: 100%;
+        padding: 0 0 0 10px;
 
         div {
             height: 100px;
-            width: 150px;
-            // aspect-ratio: 1;
-            line-height: 100px;
+            width: 180px;
+            line-height: 110px;
             font-size: $font-size-text;
             text-align: center;
-            margin: 0 20px;
+            // margin: 0 20px;
             margin-left: auto;
-            // outline: 1px solid rgba(192, 192, 192, 0.171);
+            margin-right: auto;
+            padding: 0;
         }
+    }
+
+    .temps-options::-webkit-scrollbar {
+        width: 0;
     }
 
 }
