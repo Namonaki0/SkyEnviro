@@ -3,6 +3,7 @@
 $font-primary: "Playfair Display", sans-serif;
 $font-size-h1: 32px;
 $font-size-h2: 20px;
+$font-size-text: 18px;
 
 //? MOBILE VERSION
 
@@ -17,33 +18,32 @@ body {
     height: 100vh;
     place-content: center;
     color: white;
+    background: #1630dbe5;
     font-family: $font-primary;
     position: relative;
     overflow: hidden;
 }
 
-body::before {
-    content: "";
-    display: table-cell;
-    width: 600px;
-    aspect-ratio: 1;
-    z-index: -1;
-    background: #1630dbe5;
-    animation: bg-loop 60s linear infinite;
-    position: absolute;
+// body::before {
+//     content: "";
+//     display: table-cell;
+//     width: 600px;
+//     aspect-ratio: 1;
+//     z-index: -1;
+//     background: #1630dbe5;
+//     animation: bg-loop 60s linear infinite;
+//     position: absolute;
 
-    @keyframes bg-loop {
-        0% {
-            transform: rotate(0%);
-        }
+//     @keyframes bg-loop {
+//         0% {
+//             transform: rotate(0%);
+//         }
 
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-}
-
-
+//         100% {
+//             transform: rotate(360deg);
+//         }
+//     }
+// }
 
 #output {
     text-align: center;
@@ -60,11 +60,31 @@ body::before {
         font-weight: 100;
     }
 
-    .min-max-temps {
-        display: flex;
-        margin-top: 10px;
-        width: 250px;
+    .temps-options {
+        display: -webkit-box;
+        position: absolute;
+        left: 0;
         justify-content: space-evenly;
+        outline: 1px solid rgba(192, 192, 192, 0.171);
+        margin: 30px;
+        overflow-x: auto;
+        width: 700px;
+
+        -webkit-scrollbar {
+            width: 0px;
+        }
+
+        div {
+            height: 100px;
+            width: 150px;
+            // aspect-ratio: 1;
+            line-height: 100px;
+            font-size: $font-size-text;
+            text-align: center;
+            margin: 0 20px;
+            margin-left: auto;
+            // outline: 1px solid rgba(192, 192, 192, 0.171);
+        }
     }
 
 }

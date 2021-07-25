@@ -18,13 +18,16 @@ async function fetchCity() {
     <h2>${result.list[0].main.temp} &deg;</h2>
     <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>
     <div>${data.weather[0].description}</div> 
-    <div class="min-max-temps">
+    <div class="temps-options">
       <div><span>min:</span> ${result.list[0].main.temp_min}&deg;</div> 
       <div><span>max:</span> ${result.list[0].main.temp_max}&deg;</div> 
+      <div><span>feels like:</span> ${result.list[0].main.feels_like}&deg;</div> 
+      <div><span>pressure:</span> ${result.list[0].main.pressure}&deg;</div> 
+      <div><span>humidity:</span> ${result.list[0].main.humidity}&deg;</div> 
     </div>
     `;
 
-  console.log(result);
+  // console.log(result);
 }
 
 document.addEventListener("DOMContentLoaded", fetchCity);
