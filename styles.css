@@ -11,8 +11,6 @@ body {
   display: grid;
   height: 100vh;
   place-content: center;
-  background: #cccccc;
-  background: orange;
   color: white;
   font-family: "Playfair Display", sans-serif;
   position: relative;
@@ -27,8 +25,8 @@ html {
 body::before {
   content: "";
   display: table-cell;
-  width: 1000px;
-  height: 1000px;
+  width: 800px;
+  height: 800px;
   z-index: -1;
   background: #1630dbe5;
   -webkit-animation: bgloop 60s linear infinite;
@@ -133,6 +131,8 @@ body::before {
   #output h2 {
     position: absolute;
     top: 40px;
+    left: 0;
+    right: 0;
     font-size: 50px;
   }
   .temps-options {
