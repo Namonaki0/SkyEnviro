@@ -18,6 +18,8 @@ body {
     display: grid;
     height: 100vh;
     place-content: center;
+    background: #cccccc;
+    background: orange;
     color: white;
     font-family: $font-primary;
     position: relative;
@@ -110,8 +112,28 @@ body::before {
 }
 
 @media (min-width: 600px) {
+    body {
+        display: grid;
+        place-content: center;
+        height: 100vh;
+    }
+    
     #output {
         display: flex;
+        align-items: center;
+        width: 100vw;
+        justify-content: space-evenly;
+
+        h2 {
+            position: absolute;
+            top: 40px;
+            font-size: 50px;
+        }
+    }
+    
+    .temps-options {
+        display: flex;
+        justify-content: center;
     }
 }
 

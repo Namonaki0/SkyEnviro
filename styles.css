@@ -11,6 +11,8 @@ body {
   display: grid;
   height: 100vh;
   place-content: center;
+  background: #cccccc;
+  background: orange;
   color: white;
   font-family: "Playfair Display", sans-serif;
   position: relative;
@@ -110,10 +112,36 @@ body::before {
 }
 
 @media (min-width: 600px) {
+  body {
+    display: -ms-grid;
+    display: grid;
+    place-content: center;
+    height: 100vh;
+  }
   #output {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 100vw;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  #output h2 {
+    position: absolute;
+    top: 40px;
+    font-size: 50px;
+  }
+  .temps-options {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 /*# sourceMappingURL=styles.css.map */
