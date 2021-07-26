@@ -17,7 +17,7 @@ async function fetchCity() {
     <h1>${data.name}</h1> 
     <h2>${result.list[0].main.temp} &deg;</h2>
     <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>
-    <div>${data.weather[0].description}</div> 
+    <div class="weather-description">${data.weather[0].description}</div> 
     <div class="temps-options">
       <div><span>min:</span> ${result.list[0].main.temp_min}&deg;</div> 
       <div><span>max:</span> ${result.list[0].main.temp_max}&deg;</div> 

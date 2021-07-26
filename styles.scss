@@ -2,7 +2,8 @@
 
 $font-primary: "Playfair Display", sans-serif;
 $font-size-h1: 32px;
-$font-size-h2: 20px;
+$font-size-h2: 25px;
+$font-size-description: 20px;
 $font-size-text: 18px;
 
 //? MOBILE VERSION
@@ -15,13 +16,12 @@ $font-size-text: 18px;
 
 body {
     display: grid;
-    height: 80vh;
+    height: 100vh;
     place-content: center;
     color: white;
     font-family: $font-primary;
     position: relative;
     overflow: hidden;
-    // background: #1630dbe5;
 }
 
 html {
@@ -29,11 +29,12 @@ html {
     scroll-behavior: smooth;
 }
 
+
 body::before {
     content: "";
     display: table-cell;
     width: 1000px;
-    aspect-ratio: 1;
+    height: 1000px;
     z-index: -1;
     background: #1630dbe5;
     animation: bgloop 60s linear infinite;
@@ -79,6 +80,11 @@ body::before {
         overflow-y: hidden;
         width: 100%;
         padding: 0 10px;
+        -webkit-overflow-scrolling: touch;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         span {
             margin-left: 15px;
@@ -92,11 +98,22 @@ body::before {
             text-align: center;
             padding: 0;
         }
+
+        
     }
 
-    .temps-options::-webkit-scrollbar {
-        width: 0;
+    .weather-description {
+        font-size: $font-size-description;
+        letter-spacing: 1px;
     }
 
 }
+
+@media (min-width: 600px) {
+    #output {
+        display: flex;
+    }
+}
+
+
 
