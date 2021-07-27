@@ -31,3 +31,15 @@ async function fetchCity() {
 }
 
 document.addEventListener("DOMContentLoaded", fetchCity);
+
+const citiesMenu = document.querySelector(".city-menu");
+const menuIcon = document.querySelector(".fa-caret-square-down");
+const closeMenu = document.querySelector(".fa-times");
+
+menuIcon.addEventListener("click", () => {
+  citiesMenu.classList.add("active");
+});
+
+closeMenu.addEventListener("click", () => {
+  citiesMenu.classList.remove("active");
+});

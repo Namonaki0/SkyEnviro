@@ -58,6 +58,7 @@ body::before {
   right: 25px;
   font-size: 35px;
   text-shadow: 0 0 1px #1c1c1c;
+  z-index: 100;
 }
 
 .city-menu {
@@ -77,6 +78,25 @@ body::before {
       -ms-flex-pack: end;
           justify-content: flex-end;
   background: rgba(0, 0, 255, 0.877);
+  display: none;
+  -webkit-transform: translateX(50%);
+          transform: translateX(50%);
+  -webkit-transition: all 150ms linear;
+  transition: all 150ms linear;
+  opacity: 0;
+}
+
+.city-menu.active {
+  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.city-menu .fa-caret-square-down {
+  pointer-events: none;
 }
 
 .city-menu .fa-times {
