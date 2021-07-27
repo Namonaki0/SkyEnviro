@@ -4,12 +4,12 @@ const key = apiKey;
 
 async function fetchCity() {
   const api = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${key}`
+    `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=${key}`
   );
   const data = await api.json();
 
   const temp = await fetch(
-    `https://api.openweathermap.org/data/2.5/find?q=Lisbon&units=metric&appid=${key}`
+    `https://api.openweathermap.org/data/2.5/find?q=Tokyo&units=metric&appid=${key}`
   );
   const result = await temp.json();
 

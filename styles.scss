@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
 
-$font-primary: "Playfair Display", sans-serif;
-$font-size-h1: 32px;
-$font-size-h2: 25px;
+$font-primary: "Kameron", sans-serif;
+// $font-secondary: "Playfair Display", sans-serif;
+$font-size-h1: 35px;
+$font-size-h2: 40px;
 $font-size-description: 20px;
-$font-size-text: 18px;
+$font-size-text: 25px;
 
 //? MOBILE VERSION
 
@@ -37,7 +39,7 @@ body::before {
     height: 800px;
     z-index: -1;
     background: #1630dbe5;
-    animation: bgloop 60s linear infinite;
+    animation: bgloop 120s linear infinite;
     position: absolute;
 
     @keyframes bgloop {
@@ -58,6 +60,7 @@ body::before {
 
     h1   {      
         font-size:$font-size-h1;
+        font-weight: 400;
     }
 
     h2   {
@@ -68,23 +71,28 @@ body::before {
         font-weight: 100;
     }
 
+    img {
+        margin: 10px;
+    }
+
     .temps-options {
         display: -webkit-box;
         position: absolute;
         left: 0;
         bottom: 10%;
-        justify-content: space-evenly;
         border-top: 1px solid rgba(192, 192, 192, 0.171);
         border-bottom: 1px solid rgba(192, 192, 192, 0.171);
         overflow-x: auto;
         overflow-y: hidden;
         width: 100%;
         padding: 0 10px;
-        -webkit-overflow-scrolling: touch;
+        margin: 0 10px 0 0;
 
         &::-webkit-scrollbar {
             display: none;
         }
+
+        
 
         span {
             margin-left: 15px;
@@ -97,6 +105,10 @@ body::before {
             font-size: $font-size-text;
             text-align: center;
             padding: 0;
+
+            &:last-child {
+                padding-right: 20px;
+            }
         }
 
         
@@ -104,6 +116,7 @@ body::before {
 
     .weather-description {
         font-size: $font-size-description;
+        font-size: $font-size-text;
         letter-spacing: 1px;
     }
 
