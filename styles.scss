@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&display=swap');
-// @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&display=swap');
 
 $font-primary: "Kameron", sans-serif;
-// $font-secondary: "Playfair Display", sans-serif;
 $font-size-h1: 35px;
 $font-size-h2: 40px;
 $font-size-description: 20px;
@@ -53,7 +51,45 @@ body::before {
     }
 }
 
+.menu {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 35px;
+    text-shadow: 0 0 1px #1c1c1c;
 
+}
+
+.city-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: rgba(0, 0, 255, 0.877);
+
+    .fa-times {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
+
+    ul {
+        text-align: right;
+        list-style: none;
+        
+
+        li {
+            padding: 20px 75px;
+            font-size: $font-size-text;
+        }
+    }
+}
 
 #output {
     text-align: center;
