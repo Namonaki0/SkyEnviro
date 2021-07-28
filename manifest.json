@@ -1,0 +1,21 @@
+{
+    "name": "SkyEnviro",
+    "short_name": "SkyEnviro",
+    "start_url": ".",
+    "background_color": "#fff",
+    "theme_color": "#0000ff",
+    "display": "standalone", 
+    "prefer_related_applications": true,
+    "icons": [
+        {
+            "src": "images/skyenviro.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "images/skyenviro2.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

@@ -78,7 +78,7 @@ body::before {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background: rgba(0, 0, 255, 0.877);
+  background: #0000ffe0;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   -webkit-transition: all 150ms linear;
