@@ -2,14 +2,33 @@ import { apiKey } from "./key.js";
 const output = document.getElementById("output");
 const key = apiKey;
 
+let chosenCity = `London`;
+
+//? DOCUMENT LOADS ALL LINKS
+document.addEventListener("DOMContentLoaded", function citySelection() {
+  const cityLinks = document.querySelectorAll("[data-city]");
+
+  function cityInfo() {
+    chosenCity = this.dataset.target;
+    citiesMenu.classList.remove("active");
+    menuIcon.style.display = "";
+    fetchCity();
+  }
+
+  cityLinks.forEach((city) => {
+    city.addEventListener("click", cityInfo);
+  });
+});
+
+//? API FETCH
 async function fetchCity() {
   const api = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&appid=${key}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${key}`
   );
   const data = await api.json();
 
   const temp = await fetch(
-    `https://api.openweathermap.org/data/2.5/find?q=Tokyo&units=metric&appid=${key}`
+    `https://api.openweathermap.org/data/2.5/find?q=${chosenCity}&units=metric&appid=${key}`
   );
   const result = await temp.json();
 
@@ -26,12 +45,11 @@ async function fetchCity() {
       <div><span>humidity:</span> ${result.list[0].main.humidity}&deg;</div> 
     </div>
     `;
-
-  // console.log(result);
 }
 
 document.addEventListener("DOMContentLoaded", fetchCity);
 
+//? MENU BEHAVIOUR
 const citiesMenu = document.querySelector(".city-menu");
 const menuIcon = document.querySelector(".fa-caret-square-down");
 const closeMenu = document.querySelector(".fa-times");
