@@ -58,6 +58,7 @@ body::before {
     font-size: 35px;
     text-shadow: 0 0 1px #1c1c1c;
     z-index: 100;
+    cursor: pointer;
 }
 
 .city-menu {
@@ -71,14 +72,12 @@ body::before {
     align-items: center;
     justify-content: flex-end;
     background: rgba(0, 0, 255, 0.877);
-    display: none;
-    transform: translateX(50%);
+    transform: translateX(100%);
     transition: all 150ms linear;
     opacity: 0;
 
     &.active {
         opacity: 1;
-        display: flex;
         transform: translateX(0%);
     }
 
@@ -91,6 +90,7 @@ body::before {
         top: 15px;
         right: 20px;
         font-size: 35px;  
+        cursor: pointer;
     }
 
     ul {
@@ -101,6 +101,12 @@ body::before {
         li {
             padding: 20px 75px;
             font-size: $font-size-text;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            margin: 0;
         }
     }
 }

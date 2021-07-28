@@ -38,8 +38,10 @@ const closeMenu = document.querySelector(".fa-times");
 
 menuIcon.addEventListener("click", () => {
   citiesMenu.classList.add("active");
+  menuIcon.style.display = "none";
 });
 
 closeMenu.addEventListener("click", () => {
   citiesMenu.classList.remove("active");
+  menuIcon.style.display = "";
 });
