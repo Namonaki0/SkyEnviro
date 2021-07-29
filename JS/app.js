@@ -20,8 +20,17 @@ document.addEventListener("DOMContentLoaded", function citySelection() {
   });
 });
 
+//? WEATHER ICONS FETCH
+document.addEventListener("DOMContentLoaded", weatherIcons);
+
+async function weatherIcons() {
+  const iconFetch = await fetch("./icons.json");
+  const icons = await iconFetch.json();
+  fetchCity(icons);
+}
+
 //? API FETCH
-async function fetchCity() {
+async function fetchCity(icons) {
   const api = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${key}`
   );
@@ -36,6 +45,7 @@ async function fetchCity() {
     <h1>${data.name}</h1> 
     <h2>${result.list[0].main.temp} &deg;</h2>
     <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>
+    <span class="weather-icon"><i class="${icons.cloudy.cloudMoon}"></i></span>
     <div class="weather-description">${data.weather[0].description}</div> 
     <div class="temps-options">
       <div><span>min:</span> ${result.list[0].main.temp_min}&deg;</div> 
