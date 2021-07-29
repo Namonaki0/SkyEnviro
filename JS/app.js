@@ -65,7 +65,6 @@ closeMenu.addEventListener("click", () => {
 });
 
 //? SERVICE WORKER REGISTRATION
-
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker
     .register("sw.js")

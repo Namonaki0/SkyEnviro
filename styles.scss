@@ -15,9 +15,7 @@ $font-size-text: 25px;
 }
 
 body {
-    display: grid;
     height: 100vh;
-    place-content: center;
     color: white;
     font-family: $font-primary;
     position: relative;
@@ -117,6 +115,7 @@ body::before {
     h1   {      
         font-size:$font-size-h1;
         font-weight: 400;
+        padding-top: 100px;
     }
 
     h2   {
@@ -136,19 +135,19 @@ body::before {
         position: absolute;
         left: 0;
         bottom: 10%;
-        border-top: 1px solid rgba(192, 192, 192, 0.171);
-        border-bottom: 1px solid rgba(192, 192, 192, 0.171);
-        overflow-x: auto;
-        overflow-y: hidden;
+        border-top: 1px solid rgba(192, 192, 192, 0.075);
+        border-bottom: 1px solid rgba(192, 192, 192, 0.075);
         width: 100%;
         padding: 0 10px;
         margin: 0 10px 0 0;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
 
         &::-webkit-scrollbar {
-            display: none;
+            width: 0;
         }
-
-        
 
         span {
             margin-left: 15px;
@@ -157,7 +156,7 @@ body::before {
         div {
             height: 100px;
             width: max-content;
-            line-height: 100px;
+            line-height: 110px;
             font-size: $font-size-text;
             text-align: center;
             padding: 0;
