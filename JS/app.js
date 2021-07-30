@@ -45,8 +45,8 @@ async function fetchCity(icons) {
     <h1>${data.name}</h1> 
     <h2>${result.list[0].main.temp} &deg;</h2>
     <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png"></img>
-    <span class="weather-icon"><i class="${icons.cloudy.cloudMoon}"></i></span>
     <div class="weather-description">${data.weather[0].description}</div> 
+    <span class="weather-icon"><i class="${icons.cloudy.cloud}"></i></span>
     <div class="temps-options">
       <div><span>min:</span> ${result.list[0].main.temp_min}&deg;</div> 
       <div><span>max:</span> ${result.list[0].main.temp_max}&deg;</div> 
@@ -55,9 +55,20 @@ async function fetchCity(icons) {
       <div><span>humidity:</span> ${result.list[0].main.humidity}&deg;</div> 
     </div>
     `;
+
+  document.addEventListener("DOMContentLoaded", fetchCity);
 }
 
-document.addEventListener("DOMContentLoaded", fetchCity);
+// function weatherDetector(data, icons) {
+//   const weatherDescription = data.weather[0].description;
+//   const weatherIconSpan = document.querySelector(".weather-icon");
+//   console.log(weatherDescription);
+
+//   if (weatherDescription.contains("clouds")) {
+//     weatherIconSpan.innerHTML = `</i>`;
+//     console.log(true);
+//   }
+// }
 
 //? MENU BEHAVIOUR
 const citiesMenu = document.querySelector(".city-menu");
