@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&display=swap');
 
 $font-primary: "Kameron", sans-serif;
-$font-size-h1: 35px;
-$font-size-h2: 40px;
-$font-size-description: 20px;
+$font-size-h1: 36px;
+$font-size-h2: 48px;
+$font-size-description: 48px;
 $font-size-text: 25px;
 
 //? MOBILE VERSION
@@ -34,7 +34,7 @@ body::before {
     width: 800px;
     height: 800px;
     z-index: -1;
-    background: #1630dbe5;
+    background: #5466DF;
     animation: bgloop 120s linear infinite;
     position: absolute;
 
@@ -69,17 +69,17 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background: #0000ffe0;
-    transform: translateX(100%);
+    background: #5564ca;
+    transform: translateY(-100%);
     transition: all 150ms linear;
     opacity: 0;
 
     &.active {
         opacity: 1;
-        transform: translateX(0%);
+        transform: translateY(0%);
     }
 
-    .fa-caret-square-down {
+    .fa-chevron-down {
         pointer-events: none;
     }
 
@@ -128,29 +128,33 @@ body::before {
 
     img {
         margin: 10px;
+        width: 100px;
+        height: 100px;
     }
 
     .temps-options {
-        display: -webkit-box;
-        position: absolute;
-        left: 0;
-        bottom: 5%;
+        display: flex;
+        // position: absolute;
+        // left: 0;
+        // bottom: 5%;
         border-top: 1px solid rgba(192, 192, 192, 0.075);
         border-bottom: 1px solid rgba(192, 192, 192, 0.075);
-        width: 100%;
+        // width: 100%;
         padding: 0 10px;
-        margin: 0 10px 0 0;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
+        // margin: 0 10px 0 0;
+        // overflow-x: scroll;
+        // overflow-y: hidden;
+        // scroll-behavior: smooth;
+        // -webkit-overflow-scrolling: touch;
 
-        &::-webkit-scrollbar {
-            width: 0;
-        }
+        // &::-webkit-scrollbar {
+        //     width: 0;
+        // }
 
         span {
             margin-left: 15px;
+            display: block;
+            // background: cyan;
         }
 
         div {
@@ -160,6 +164,7 @@ body::before {
             font-size: $font-size-text;
             text-align: center;
             padding: 0;
+            background: red;
 
             &:last-child {
                 padding-right: 20px;

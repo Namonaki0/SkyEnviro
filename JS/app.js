@@ -72,7 +72,7 @@ async function fetchCity(icons) {
 
 //? MENU BEHAVIOUR
 const citiesMenu = document.querySelector(".city-menu");
-const menuIcon = document.querySelector(".fa-caret-square-down");
+const menuIcon = document.querySelector(".fa-chevron-down");
 const closeMenu = document.querySelector(".fa-times");
 
 menuIcon.addEventListener("click", () => {
