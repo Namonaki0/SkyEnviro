@@ -7,7 +7,7 @@
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   color: white;
   font-family: "Kameron", sans-serif;
   position: relative;
@@ -108,7 +108,7 @@ body::before {
 
 .city-menu ul li {
   padding: 20px 75px;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .city-menu ul a {
@@ -124,11 +124,13 @@ body::before {
 #output h1 {
   font-size: 36px;
   font-weight: 400;
-  padding-top: 100px;
+  padding-top: 40px;
+  text-shadow: 0 0 1px #1c1c1c;
 }
 
 #output h2 {
   font-size: 48px;
+  text-shadow: 0 0 1px #1c1c1c;
 }
 
 #output h1, #output h2 {
@@ -142,39 +144,57 @@ body::before {
 }
 
 #output .temps-options {
+  padding: 0 15px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: (1fr)[2];
+      grid-template-rows: repeat(2, 1fr);
+  border-top: 1px solid rgba(192, 192, 192, 0.075);
+  border-bottom: 1px solid rgba(192, 192, 192, 0.075);
+}
+
+#output .temps-options .min-max {
+  min-width: 50%;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+#output .temps-options .feels-like {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  grid-row: 2 / -1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border-top: 1px solid rgba(192, 192, 192, 0.075);
-  border-bottom: 1px solid rgba(192, 192, 192, 0.075);
-  padding: 0 10px;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #output .temps-options span {
-  margin-left: 15px;
+  font-size: 20px;
   display: block;
 }
 
 #output .temps-options div {
-  height: 100px;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
-  line-height: 110px;
-  font-size: 25px;
+  margin-top: 15px;
+  font-size: 30px;
   text-align: center;
-  padding: 0;
-  background: red;
 }
 
 #output .temps-options div:last-child {
-  padding-right: 20px;
+  margin-top: 10px;
 }
 
 #output .weather-description {
-  font-size: 48px;
-  font-size: 25px;
+  font-size: 30px;
   letter-spacing: 1px;
+  margin-bottom: 50px;
 }
 
 @media (min-width: 600px) {

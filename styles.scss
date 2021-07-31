@@ -3,8 +3,8 @@
 $font-primary: "Kameron", sans-serif;
 $font-size-h1: 36px;
 $font-size-h2: 48px;
-$font-size-description: 48px;
-$font-size-text: 25px;
+$font-size-description: 30px;
+$font-size-text: 20px;
 
 //? MOBILE VERSION
 
@@ -15,7 +15,7 @@ $font-size-text: 25px;
 }
 
 body {
-    height: 100vh;
+    min-height: 100vh;
     color: white;
     font-family: $font-primary;
     position: relative;
@@ -98,7 +98,7 @@ body::before {
 
         li {
             padding: 20px 75px;
-            font-size: $font-size-text;
+            font-size: $font-size-description;
         }
 
         a {
@@ -111,15 +111,19 @@ body::before {
 
 #output {
     text-align: center;
+    
 
     h1   {      
         font-size:$font-size-h1;
         font-weight: 400;
-        padding-top: 100px;
+        padding-top: 40px;
+        text-shadow: 0 0 1px #1c1c1c;
+        
     }
 
     h2   {
         font-size:$font-size-h2;
+        text-shadow: 0 0 1px #1c1c1c;
     }
 
     h1, h2 {
@@ -133,41 +137,41 @@ body::before {
     }
 
     .temps-options {
-        display: flex;
-        // position: absolute;
-        // left: 0;
-        // bottom: 5%;
+        padding: 0 15px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(2, 1fr);
         border-top: 1px solid rgba(192, 192, 192, 0.075);
         border-bottom: 1px solid rgba(192, 192, 192, 0.075);
-        // width: 100%;
-        padding: 0 10px;
-        // margin: 0 10px 0 0;
-        // overflow-x: scroll;
-        // overflow-y: hidden;
-        // scroll-behavior: smooth;
-        // -webkit-overflow-scrolling: touch;
 
-        // &::-webkit-scrollbar {
-        //     width: 0;
-        // }
+
+        .min-max {
+            min-width: 50%;
+            grid-row: 1;
+            border-right: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        
+
+        .feels-like {
+            grid-column: 1 / span 2;
+            grid-row: 2 / -1;
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
 
         span {
-            margin-left: 15px;
+            font-size: $font-size-text;
             display: block;
-            // background: cyan;
         }
 
         div {
-            height: 100px;
-            width: max-content;
-            line-height: 110px;
-            font-size: $font-size-text;
+            margin-top: 15px;
+            font-size: 30px;
             text-align: center;
-            padding: 0;
-            background: red;
 
             &:last-child {
-                padding-right: 20px;
+                margin-top: 10px;
             }
         }
 
@@ -176,8 +180,8 @@ body::before {
 
     .weather-description {
         font-size: $font-size-description;
-        font-size: $font-size-text;
         letter-spacing: 1px;
+        margin-bottom: 50px;
     }
 
 }

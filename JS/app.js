@@ -48,11 +48,21 @@ async function fetchCity(icons) {
     <div class="weather-description">${data.weather[0].description}</div> 
     
     <div class="temps-options">
-      <div><span>min:</span> ${result.list[0].main.temp_min}&deg;</div> 
-      <div><span>max:</span> ${result.list[0].main.temp_max}&deg;</div> 
-      <div><span>feels like:</span> ${result.list[0].main.feels_like}&deg;</div> 
-      <div><span>pressure:</span> ${result.list[0].main.pressure}&deg;</div> 
-      <div><span>humidity:</span> ${result.list[0].main.humidity}&deg;</div> 
+
+      <div class="min-max">
+        <div><span>min:</span> ${result.list[0].main.temp_min}&deg;</div> 
+        <div><span>max:</span> ${result.list[0].main.temp_max}&deg;</div> 
+      </div>
+
+      <div class="pressure-humidity">
+        <div><span>pressure:</span> ${result.list[0].main.pressure}&deg;</div> 
+        <div><span>humidity:</span> ${result.list[0].main.humidity}&deg;</div> 
+      </div>
+
+      <div class="feels-like">
+        <div><span>feels like:</span> ${result.list[0].main.feels_like}&deg;</div> 
+      </div>
+
     </div>
     `;
 
