@@ -1,6 +1,17 @@
 import { apiKey } from "./key.js";
 const output = document.getElementById("output");
+
 const key = apiKey;
+
+const findCity = document.querySelector("#find");
+
+findCity.addEventListener("click", () => {
+  const searchField = document.getElementById("search");
+  let searchInput = searchField.value;
+  console.log(searchInput);
+
+  searchInput = "";
+});
 
 let chosenCity = `London`;
 
@@ -68,17 +79,6 @@ async function fetchCity(icons) {
 
   document.addEventListener("DOMContentLoaded", fetchCity);
 }
-
-// function weatherDetector(data, icons) {
-//   const weatherDescription = data.weather[0].description;
-//   const weatherIconSpan = document.querySelector(".weather-icon");
-//   console.log(weatherDescription);
-
-//   if (weatherDescription.contains("clouds")) {
-//     weatherIconSpan.innerHTML = `</i>`;
-//     console.log(true);
-//   }
-// }
 
 //? MENU BEHAVIOUR
 const citiesMenu = document.querySelector(".city-menu");
