@@ -91,36 +91,64 @@ body::before {
         cursor: pointer;
     }
 
-    #search {
+    .search-city-wrapper {
         position: absolute;
-        background: none;
-        border: none;
-        color: white;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.07);
         top: 25px;
-        transform: translate(-25%, 25%);
-        padding: 10px 5px;
-        width: 70%;
-        transition: all 150ms linear;
-        font-size: $font-size-text;
+        left: 15px;
+        right: 85px;
 
-        &:focus {
-            outline: none;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.233);
+        #search {
+            background: none;
+            border: none;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.212);
+            padding: 10px 5px;
+            width: 100%;
+            transition: all 150ms linear;
+            font-size: $font-size-text;
+             left: 15px;
+             right: 25px;
+
+            &:focus {
+                outline: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.541);
+            }
+
+            &::placeholder {
+                color: rgba(255, 255, 255, 0.548);
+                font-weight: 100;
+            }
         }
 
-        &::placeholder {
-            color: rgba(255, 255, 255, 0.548);
+        #find {
+            all: unset;
+            outline: 1px solid rgba(255, 255, 255, 0.212);
+            padding: 5px 20px;
+            cursor: pointer;
+            width: 90%;
+            margin-top: 10px;
+            text-align: center;
+            transition: all 150ms linear;
+            font-size: $font-size-text;
+            letter-spacing: 1px;
+
+               &:hover,
+               &:focus {
+                   outline: 1px solid rgba(255, 255, 255, 0.541);
+               }
+
         }
     }
+
+    
 
     ul {
         text-align: right;
         list-style: none;
-        
+
 
         li {
-            padding: 20px 75px;
+            padding: 10px 75px;
             font-size: $font-size-description;
         }
 

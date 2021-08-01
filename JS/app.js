@@ -3,17 +3,28 @@ const output = document.getElementById("output");
 
 const key = apiKey;
 
-const findCity = document.querySelector("#find");
-
-findCity.addEventListener("click", () => {
-  const searchField = document.getElementById("search");
-  let searchInput = searchField.value;
-  console.log(searchInput);
-
-  searchInput = "";
-});
-
 let chosenCity = `London`;
+
+//? MENU CITY SEARCH
+const findCity = document.getElementById("find");
+
+if (findCity) {
+  console.log("OPEN");
+  findCity.addEventListener("click", () => {
+    console.log("TRIGGERED");
+    const searchField = document.getElementById("search");
+    let searchInput = searchField.value;
+    chosenCity = searchInput;
+    fetchCity();
+    citiesMenu.classList.remove("active");
+    menuIcon.style.display = "";
+    console.log(searchInput);
+    searchField.value = "";
+  });
+} else {
+  menuIcon.style.display = "";
+  console.log("CLOSED");
+}
 
 //? DOCUMENT LOADS ALL LINKS
 document.addEventListener("DOMContentLoaded", function citySelection() {
@@ -31,17 +42,8 @@ document.addEventListener("DOMContentLoaded", function citySelection() {
   });
 });
 
-//? WEATHER ICONS FETCH
-document.addEventListener("DOMContentLoaded", weatherIcons);
-
-async function weatherIcons() {
-  const iconFetch = await fetch("./icons.json");
-  const icons = await iconFetch.json();
-  fetchCity(icons);
-}
-
 //? API FETCH
-async function fetchCity(icons) {
+async function fetchCity() {
   const api = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${key}`
   );
@@ -76,9 +78,8 @@ async function fetchCity(icons) {
 
     </div>
     `;
-
-  document.addEventListener("DOMContentLoaded", fetchCity);
 }
+document.addEventListener("DOMContentLoaded", fetchCity);
 
 //? MENU BEHAVIOUR
 const citiesMenu = document.querySelector(".city-menu");
