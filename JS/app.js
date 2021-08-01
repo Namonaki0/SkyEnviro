@@ -5,6 +5,11 @@ const key = apiKey;
 
 let chosenCity = `London`;
 let searchedCities = [];
+let localStorage = window.localStorage;
+
+// localStorage.clear();
+
+console.log(localStorage);
 
 //? DOCUMENT LOADS ALL LINKS
 document.addEventListener("DOMContentLoaded", citySelection);
@@ -16,6 +21,7 @@ function citySelection() {
     chosenCity = this.dataset.target;
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
+
     fetchCity();
   }
 
@@ -57,8 +63,16 @@ function searchHistory(city) {
   cityLink.innerText = `${city}`;
   historyCitySection.appendChild(cityLink);
   citySelection();
+  // localStorageSave(city);
   console.log(historyCitySection);
 }
+
+// function localStorageSave(city) {
+//   for (let i = 0; i < searchedCities.length; i++) {
+//     localStorage.setItem(`${i}`, `${city}`);
+//     localStorage = [...searchedCities];
+//   }
+// }
 
 //? API FETCH
 async function fetchCity() {
