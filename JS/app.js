@@ -4,26 +4,39 @@ const output = document.getElementById("output");
 const key = apiKey;
 
 let chosenCity = `London`;
+let searchedCities = [];
 
 //? MENU CITY SEARCH
 const findCity = document.getElementById("find");
 
 if (findCity) {
-  console.log("OPEN");
+  const searchField = document.getElementById("search");
+
   findCity.addEventListener("click", () => {
-    console.log("TRIGGERED");
-    const searchField = document.getElementById("search");
     let searchInput = searchField.value;
     chosenCity = searchInput;
-    fetchCity();
+    searchField.value = "";
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
-    console.log(searchInput);
-    searchField.value = "";
+    const searchedCitiesName = searchedCities;
+    searchedCitiesName.push(searchInput);
+    fetchCity();
+    searchHistory(searchInput);
+    console.log(searchedCitiesName);
+    // searchedCities(searchInput);
   });
 } else {
   menuIcon.style.display = "";
-  console.log("CLOSED");
+}
+
+//? SEARCH HISTORY IN MENU
+function searchHistory(city) {
+  const ul = document.querySelector("ul");
+  const li = document.createElement("li");
+  li.classList.add("city");
+  li.innerText = `${city}`;
+  ul.appendChild(li);
+  console.log(ul);
 }
 
 //? DOCUMENT LOADS ALL LINKS
