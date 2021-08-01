@@ -6,6 +6,24 @@ const key = apiKey;
 let chosenCity = `London`;
 let searchedCities = [];
 
+//? DOCUMENT LOADS ALL LINKS
+document.addEventListener("DOMContentLoaded", citySelection);
+
+function citySelection() {
+  const cityLinks = document.querySelectorAll("[data-city]");
+
+  function cityInfo() {
+    chosenCity = this.dataset.target;
+    citiesMenu.classList.remove("active");
+    menuIcon.style.display = "";
+    fetchCity();
+  }
+
+  cityLinks.forEach((city) => {
+    city.addEventListener("click", cityInfo);
+  });
+}
+
 //? MENU CITY SEARCH
 const findCity = document.getElementById("find");
 
@@ -23,7 +41,6 @@ if (findCity) {
     fetchCity();
     searchHistory(searchInput);
     console.log(searchedCitiesName);
-    // searchedCities(searchInput);
   });
 } else {
   menuIcon.style.display = "";
@@ -31,29 +48,17 @@ if (findCity) {
 
 //? SEARCH HISTORY IN MENU
 function searchHistory(city) {
-  const ul = document.querySelector("ul");
-  const li = document.createElement("li");
-  li.classList.add("city");
-  li.innerText = `${city}`;
-  ul.appendChild(li);
-  console.log(ul);
+  const historyCitySection = document.querySelector("#history-city-section");
+  const cityLink = document.createElement("a");
+  cityLink.classList.add("city");
+  cityLink.setAttribute(`data-target`, `${city}`);
+  cityLink.setAttribute("data-city", "");
+  cityLink.setAttribute("href", "#");
+  cityLink.innerText = `${city}`;
+  historyCitySection.appendChild(cityLink);
+  citySelection();
+  console.log(historyCitySection);
 }
-
-//? DOCUMENT LOADS ALL LINKS
-document.addEventListener("DOMContentLoaded", function citySelection() {
-  const cityLinks = document.querySelectorAll("[data-city]");
-
-  function cityInfo() {
-    chosenCity = this.dataset.target;
-    citiesMenu.classList.remove("active");
-    menuIcon.style.display = "";
-    fetchCity();
-  }
-
-  cityLinks.forEach((city) => {
-    city.addEventListener("click", cityInfo);
-  });
-});
 
 //? API FETCH
 async function fetchCity() {

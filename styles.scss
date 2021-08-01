@@ -136,25 +136,20 @@ body::before {
                &:focus {
                    outline: 1px solid rgba(255, 255, 255, 0.541);
                }
-
         }
     }
 
-    
-
-    ul {
+    #history-city-section {
         text-align: right;
         list-style: none;
-
-
-        li {
-            padding: 10px 75px;
-            font-size: $font-size-description;
-        }
+        display: flex;
+        flex-direction: column;
 
         a {
+            font-size: $font-size-description;
             text-decoration: none;
             color: white;
+            padding: 10px 75px;
             margin: 0;
         }
     }
