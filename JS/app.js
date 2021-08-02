@@ -1,11 +1,11 @@
 import { apiKey } from "./key.js";
+import { localStorageSave } from "./localStorage.js";
+
 const output = document.getElementById("output");
-
+const searchField = document.querySelector("#search");
+const findBtn = document.querySelector("#find");
 const key = apiKey;
-
 let chosenCity = `London`;
-let searchedCities = [];
-let localStorage = window.localStorage;
 
 // localStorage.clear();
 
@@ -21,14 +21,19 @@ function citySelection() {
     chosenCity = this.dataset.target;
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
-
     fetchCity();
   }
-
   cityLinks.forEach((city) => {
     city.addEventListener("click", cityInfo);
   });
 }
+
+//? ENTER BUTTON SEARCH
+searchField.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    findBtn.click();
+  }
+});
 
 //? MENU CITY SEARCH
 const findCity = document.getElementById("find");
@@ -42,17 +47,15 @@ if (findCity) {
     searchField.value = "";
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
-    const searchedCitiesName = searchedCities;
-    searchedCitiesName.push(searchInput);
     fetchCity();
     searchHistory(searchInput);
-    console.log(searchedCitiesName);
+    localStorageSave(searchInput);
   });
 } else {
   menuIcon.style.display = "";
 }
 
-//? SEARCH HISTORY IN MENU
+//? MENU SEARCH HISTORY
 function searchHistory(city) {
   const historyCitySection = document.querySelector("#history-city-section");
   const cityLink = document.createElement("a");
@@ -63,16 +66,7 @@ function searchHistory(city) {
   cityLink.innerText = `${city}`;
   historyCitySection.appendChild(cityLink);
   citySelection();
-  // localStorageSave(city);
-  console.log(historyCitySection);
 }
-
-// function localStorageSave(city) {
-//   for (let i = 0; i < searchedCities.length; i++) {
-//     localStorage.setItem(`${i}`, `${city}`);
-//     localStorage = [...searchedCities];
-//   }
-// }
 
 //? API FETCH
 async function fetchCity() {
