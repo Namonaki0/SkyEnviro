@@ -1,3 +1,5 @@
+window.addEventListener("DOMContentLoaded", searchHistoryUI);
+
 //? LOCAL STORAGE
 function localStorageSave(city) {
   let searchedCities;
@@ -19,11 +21,11 @@ function searchHistoryUI(searchedCities) {
     searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
   }
   searchedCities.forEach((searchedCity) => {
-    const historyCitySection = document.querySelector("#history-city-section");
     console.log(searchedCity);
+    const historyCitySection = document.querySelector("#history-city-section");
     const cityLink = document.createElement("a");
     cityLink.classList.add("city");
-    cityLink.setAttribute(`data-target`, `searchedCity`);
+    cityLink.setAttribute(`data-target`, `${searchedCity}`);
     cityLink.setAttribute("data-city", "");
     cityLink.setAttribute("href", "#");
     cityLink.innerText = searchedCity;
