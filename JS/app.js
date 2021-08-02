@@ -1,5 +1,5 @@
 import { apiKey } from "./key.js";
-import { localStorageSave } from "./localStorage.js";
+import { localStorageSave, searchHistoryUI } from "./localStorage.js";
 
 const output = document.getElementById("output");
 const searchField = document.querySelector("#search");
