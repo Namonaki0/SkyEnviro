@@ -1,5 +1,4 @@
 import { apiKey } from "./key.js";
-import { localStorageSave, searchHistoryUI } from "./localStorage.js";
 
 const output = document.getElementById("output");
 const searchField = document.querySelector("#search");
@@ -25,6 +24,7 @@ function citySelection() {
   }
   cityLinks.forEach((city) => {
     city.addEventListener("click", cityInfo);
+    console.log(city);
   });
 }
 
@@ -47,26 +47,55 @@ if (findCity) {
     searchField.value = "";
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
-    fetchCity();
-    searchHistory(searchInput);
     localStorageSave(searchInput);
   });
 } else {
   menuIcon.style.display = "";
 }
 
-//? MENU SEARCH HISTORY
-function searchHistory(city) {
-  const historyCitySection = document.querySelector("#history-city-section");
-  const cityLink = document.createElement("a");
-  cityLink.classList.add("city");
-  cityLink.setAttribute(`data-target`, `${city}`);
-  cityLink.setAttribute("data-city", "");
-  cityLink.setAttribute("href", "#");
-  cityLink.innerText = `${city}`;
-  historyCitySection.appendChild(cityLink);
-  citySelection();
+//? LOCAL STORAGE
+////////////////////////////?
+function localStorageSave(city) {
+  let searchedCities;
+  if (localStorage.getItem("searchedCities") === null) {
+    searchedCities = [];
+    console.log("nothing");
+  } else {
+    searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
+    console.log("SOMETHING");
+  }
+  searchedCities.push(city);
+  localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+  console.log(searchedCities);
+  searchHistoryUI(searchedCities);
 }
+
+function searchHistoryUI(searchedCities) {
+  if (localStorage.getItem("searchedCities") === null) {
+    searchedCities = [];
+  } else {
+    searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
+    console.log("SOMETHING");
+  }
+
+  searchedCities.forEach((searchedCity) => {
+    console.log(searchedCity);
+
+    const historyCitySection = document.querySelector("#history-city-section");
+    const cityLink = document.createElement("a");
+    cityLink.classList.add("city");
+    cityLink.setAttribute(`data-target`, `${searchedCity}`);
+    cityLink.setAttribute("data-city", "");
+    cityLink.setAttribute("href", "#");
+    cityLink.innerText = searchedCity;
+    historyCitySection.appendChild(cityLink);
+    citySelection();
+    fetchCity();
+  });
+}
+
+window.addEventListener("DOMContentLoaded", searchHistoryUI);
+////////////////////////////?
 
 //? API FETCH
 async function fetchCity() {
