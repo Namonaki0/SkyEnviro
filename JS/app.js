@@ -59,10 +59,8 @@ function localStorageSave(city) {
   let searchedCities;
   if (localStorage.getItem("searchedCities") === null) {
     searchedCities = [];
-    console.log("nothing");
   } else {
     searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
-    console.log("SOMETHING");
   }
   searchedCities.push(city);
   localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
@@ -75,8 +73,8 @@ function searchHistoryUI(searchedCities) {
     searchedCities = [];
   } else {
     searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
-    console.log("SOMETHING");
   }
+  console.log(`These are the cities: ${searchedCities}`);
 
   searchedCities.forEach((searchedCity) => {
     console.log(searchedCity);
@@ -90,7 +88,6 @@ function searchHistoryUI(searchedCities) {
     cityLink.innerText = searchedCity;
     historyCitySection.appendChild(cityLink);
     citySelection();
-    fetchCity();
   });
 }
 
