@@ -69,10 +69,11 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    flex-direction: column;
     background: #5564ca;
     transform: translateY(-100%);
     transition: all 150ms linear;
-    opacity: 0;
+    opacity: 1;
 
     &.active {
         opacity: 1;
@@ -144,6 +145,7 @@ body::before {
         list-style: none;
         display: flex;
         flex-direction: column;
+        border: 1px solid red;
 
         a {
             font-size: $font-size-description;
@@ -152,6 +154,19 @@ body::before {
             padding: 10px 75px;
             margin: 0;
         }
+
+    }
+
+    .clear-history {
+        width: 65%;
+        margin-bottom: 30px;
+        padding: 5px 10px;
+        cursor: pointer;
+        background: rgba(255, 0, 0, 0.774);
+        border: none;
+        font-size: $font-size-text;
+        color: white;
+        box-shadow: 0 0 1px rgba(0,0,0,.8);
     }
 }
 

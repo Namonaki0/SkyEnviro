@@ -95,6 +95,21 @@ function searchHistoryUI(searchedCities) {
 }
 
 window.addEventListener("DOMContentLoaded", searchHistoryUI);
+
+//? CLEAR SEARCH HISTORY
+const clearHistoryBtn = document
+  .querySelector(".clear-history")
+  .addEventListener("click", clearSearchHistory);
+
+function clearSearchHistory(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+  historyCitySection.innerText = "";
+  localStorage.clear();
+}
+const historyCitySection = document.querySelector("#history-city-section");
+clearSearchHistory(historyCitySection);
 ////////////////////////////?
 
 //? API FETCH
