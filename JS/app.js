@@ -8,8 +8,6 @@ let chosenCity = `London`;
 
 // localStorage.clear();
 
-console.log(localStorage);
-
 //? DOCUMENT LOADS ALL LINKS
 document.addEventListener("DOMContentLoaded", citySelection);
 
@@ -24,7 +22,6 @@ function citySelection() {
   }
   cityLinks.forEach((city) => {
     city.addEventListener("click", cityInfo);
-    console.log(city);
   });
 }
 
@@ -47,6 +44,7 @@ if (findCity) {
     searchField.value = "";
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
+    fetchCity();
     localStorageSave(searchInput);
   });
 } else {
@@ -64,8 +62,16 @@ function localStorageSave(city) {
   }
   searchedCities.push(city);
   localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
-  console.log(searchedCities);
-  searchHistoryUI(searchedCities);
+
+  const historyCitySection = document.querySelector("#history-city-section");
+  const cityLink = document.createElement("a");
+  cityLink.classList.add("city");
+  cityLink.setAttribute(`data-target`, `${city}`);
+  cityLink.setAttribute("data-city", "");
+  cityLink.setAttribute("href", "#");
+  cityLink.innerText = city;
+  historyCitySection.appendChild(cityLink);
+  citySelection();
 }
 
 function searchHistoryUI(searchedCities) {
@@ -74,11 +80,8 @@ function searchHistoryUI(searchedCities) {
   } else {
     searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
   }
-  console.log(`These are the cities: ${searchedCities}`);
 
   searchedCities.forEach((searchedCity) => {
-    console.log(searchedCity);
-
     const historyCitySection = document.querySelector("#history-city-section");
     const cityLink = document.createElement("a");
     cityLink.classList.add("city");
@@ -157,7 +160,7 @@ if ("serviceWorker" in navigator) {
       console.log(registration);
     })
     .catch((error) => {
-      console.log("SW Registration failed!");
-      console.log(error);
+      console.error("SW Registration failed!");
+      console.error(error);
     });
 }
