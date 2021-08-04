@@ -6,8 +6,6 @@ const findBtn = document.querySelector("#find");
 const key = apiKey;
 let chosenCity = `London`;
 
-// localStorage.clear();
-
 //? DOCUMENT LOADS ALL LINKS
 document.addEventListener("DOMContentLoaded", citySelection);
 
@@ -44,6 +42,7 @@ if (findCity) {
     searchField.value = "";
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
+
     fetchCity();
     localStorageSave(searchInput);
   });
@@ -75,14 +74,16 @@ function localStorageSave(city) {
 }
 
 function searchHistoryUI(searchedCities) {
+  const historyCitySection = document.querySelector("#history-city-section");
   if (localStorage.getItem("searchedCities") === null) {
     searchedCities = [];
+    historyCitySection.innerHTML = `<span class="no-history">no history found</span>`;
   } else {
     searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
+    historyCitySection.innerHTML = `<span class="has-history">your history</span>`;
   }
 
   searchedCities.forEach((searchedCity) => {
-    const historyCitySection = document.querySelector("#history-city-section");
     const cityLink = document.createElement("a");
     cityLink.classList.add("city");
     cityLink.setAttribute(`data-target`, `${searchedCity}`);
@@ -99,17 +100,21 @@ window.addEventListener("DOMContentLoaded", searchHistoryUI);
 //? CLEAR SEARCH HISTORY
 const clearHistoryBtn = document
   .querySelector(".clear-history")
-  .addEventListener("click", clearSearchHistory);
+  .addEventListener("click", () => {
+    function clearSearchHistory(parent) {
+      while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+      }
 
-function clearSearchHistory(parent) {
-  while (parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-  historyCitySection.innerText = "";
-  localStorage.clear();
-}
-const historyCitySection = document.querySelector("#history-city-section");
-clearSearchHistory(historyCitySection);
+      historyCitySection.innerText = "";
+      localStorage.clear();
+      historyCitySection.innerHTML = `<span class="no-history">no history found</span>`;
+    }
+
+    const historyCitySection = document.querySelector("#history-city-section");
+    clearSearchHistory(historyCitySection);
+  });
+
 ////////////////////////////?
 
 //? API FETCH
