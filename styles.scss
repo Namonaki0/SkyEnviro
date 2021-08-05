@@ -74,7 +74,7 @@ body::before {
     background: #5564ca;
     transform: translateY(-100%);
     transition: all 150ms linear;
-    opacity: 1;
+    opacity: 0;
     max-width: 500px;
 
     &.active {
@@ -92,6 +92,15 @@ body::before {
         right: 20px;
         font-size: 35px;  
         cursor: pointer;
+    }
+
+    .span-message-wrapper {
+        // background: red;
+        width: 100%;
+        text-align: right;
+        margin-right: 30px;
+        margin-bottom: 10px;
+       
     }
 
     .search-city-wrapper {
@@ -164,9 +173,9 @@ body::before {
             margin: 5px 0;
         }
 
-        .history-message {
-            margin-bottom: 10px;
-        }
+        // .history-message {
+        //     margin-bottom: 10px;
+        // }
     }
 
     .clear-history {

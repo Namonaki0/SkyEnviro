@@ -45,28 +45,24 @@ if (findCityBtn) {
 
     fetchCity();
     localStorageSave(searchInput);
-
-    const historyCitySection = document.querySelector("#history-city-section");
-
-    // if (historyCitySection) {
-    //   console.dir(historyCitySection.nextElementSibling);
-    // }
-
-    // if (historyCitySection.firstElementChild.attributes[0].value === "city") {
-    //   historyCitySection.innerHTML = `<span class="history-message">your history</span?`;
-    // } else if (
-    //   historyCitySection.firstElementChild.attributes[0].value ===
-    //   "history-message"
-    // ) {
-    //   historyCitySection.innerHTML = `<span class="history-message">your history</span?`;
-    // } else {
-    //   historyCitySection.innerHTML = `<span class="history-message">no history found</span?`;
-    // }
-
-    // console.dir(historyCitySection);
+    spanMessageHandler();
   });
 } else {
   menuIcon.style.display = "";
+}
+
+//? HISTORY SPAN MESSAGE
+function spanMessageHandler() {
+  const historyCitySection = document.querySelector("#history-city-section");
+  const spanMessageWrapper = document.querySelector(".span-message-wrapper");
+
+  if (historyCitySection.childNodes.length == "0") {
+    spanMessageWrapper.innerHTML = `<span class="span-message">no history found</span>`;
+  } else {
+    spanMessageWrapper.innerHTML = `<span class="span-message">your history</span>`;
+  }
+
+  console.log(historyCitySection.childNodes);
 }
 
 //? LOCAL STORAGE
@@ -112,11 +108,7 @@ function searchHistoryUI(searchedCities) {
     citySelection();
   });
 
-  if (historyCitySection.childNodes) {
-    console.log("has child");
-  } else {
-    console.log("no child");
-  }
+  spanMessageHandler();
 }
 
 window.addEventListener("DOMContentLoaded", searchHistoryUI);
@@ -132,13 +124,12 @@ const clearHistoryBtn = document
 
       historyCitySection.innerText = "";
       localStorage.clear();
-      // historyCitySection.innerHTML = `<span class="no-history">no history found</span>`;
     }
 
     const historyCitySection = document.querySelector("#history-city-section");
     clearSearchHistory(historyCitySection);
+    spanMessageHandler();
   });
-
 ////////////////////////////?
 
 //? API FETCH
