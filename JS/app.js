@@ -109,6 +109,15 @@ function searchHistoryUI(searchedCities) {
   });
 
   spanMessageHandler();
+
+  if (historyCitySection.childNodes.length == "0") {
+    chosenCity = `London`;
+  } else {
+    chosenCity = searchedCities[searchedCities.length - 1];
+  }
+
+  console.log(chosenCity);
+  fetchCity();
 }
 
 window.addEventListener("DOMContentLoaded", searchHistoryUI);
