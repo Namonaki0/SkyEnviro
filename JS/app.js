@@ -37,7 +37,7 @@ if (findCityBtn) {
   const searchField = document.getElementById("search");
 
   findCityBtn.addEventListener("click", () => {
-    let searchInput = searchField.value;
+    let searchInput = searchField.value.toLowerCase();
     chosenCity = searchInput;
     searchField.value = "";
     citiesMenu.classList.remove("active");
@@ -87,6 +87,7 @@ function localStorageSave(city) {
   cityLink.innerText = city;
   historyCitySection.appendChild(cityLink);
   citySelection();
+  // errorHandling(historyCitySection, cityLink);
 }
 
 function searchHistoryUI(searchedCities) {
@@ -116,7 +117,6 @@ function searchHistoryUI(searchedCities) {
     chosenCity = searchedCities[searchedCities.length - 1];
   }
 
-  console.log(chosenCity);
   fetchCity();
 }
 
@@ -143,17 +143,18 @@ const clearHistoryBtn = document
 
 //? API FETCH
 async function fetchCity() {
-  const api = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${key}`
-  );
-  const data = await api.json();
+  try {
+    const api = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${key}`
+    );
+    const data = await api.json();
 
-  const temp = await fetch(
-    `https://api.openweathermap.org/data/2.5/find?q=${chosenCity}&units=metric&appid=${key}`
-  );
-  const result = await temp.json();
+    const temp = await fetch(
+      `https://api.openweathermap.org/data/2.5/find?q=${chosenCity}&units=metric&appid=${key}`
+    );
+    const result = await temp.json();
 
-  output.innerHTML = `
+    output.innerHTML = `
     <h1>${data.name}</h1> 
     <h2>${result.list[0].main.temp} &deg;</h2>
     <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png"></img>
@@ -177,7 +178,21 @@ async function fetchCity() {
 
     </div>
     `;
+  } catch (error) {
+    console.error("PLEASE ENTER A VALID CITY");
+    // errorHandling();
+  }
 }
+
+// function errorHandling(historyCitySection, cityLink) {
+//   const response = response.ok;
+//   if (!response) {
+//     historyCitySection.removeChild(cityLink);
+//     chosenCity = `London`;
+//     fetchCity();
+//   }
+// }
+
 document.addEventListener("DOMContentLoaded", fetchCity);
 
 //? MENU BEHAVIOUR
