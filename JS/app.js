@@ -61,8 +61,6 @@ function spanMessageHandler() {
   } else {
     spanMessageWrapper.innerHTML = `<span class="span-message">your history</span>`;
   }
-
-  console.log(historyCitySection.childNodes);
 }
 
 //? LOCAL STORAGE
@@ -179,11 +177,9 @@ async function fetchCity() {
     </div>
     `;
   } catch (error) {
-    console.error("ENTER VALID CITY");
+    console.error("ENTER A VALID CITY", error);
   }
 }
-
-// function history(error) {}
 
 document.addEventListener("DOMContentLoaded", fetchCity);
 
