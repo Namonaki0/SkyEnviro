@@ -179,19 +179,11 @@ async function fetchCity() {
     </div>
     `;
   } catch (error) {
-    console.error("PLEASE ENTER A VALID CITY");
-    // errorHandling();
+    console.error("ENTER VALID CITY");
   }
 }
 
-// function errorHandling(historyCitySection, cityLink) {
-//   const response = response.ok;
-//   if (!response) {
-//     historyCitySection.removeChild(cityLink);
-//     chosenCity = `London`;
-//     fetchCity();
-//   }
-// }
+// function history(error) {}
 
 document.addEventListener("DOMContentLoaded", fetchCity);
 
