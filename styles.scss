@@ -118,8 +118,8 @@ body::before {
             width: 100%;
             transition: all 150ms linear;
             font-size: $font-size-text;
-             left: 15px;
-             right: 25px;
+            left: 15px;
+            right: 25px;
 
             &:focus {
                 outline: none;
@@ -129,6 +129,10 @@ body::before {
             &::placeholder {
                 color: rgba(255, 255, 255, 0.548);
                 font-weight: 100;
+            }
+
+            &.error-handling {
+                border-bottom: 1px solid red;
             }
         }
 
@@ -173,9 +177,6 @@ body::before {
             margin: 5px 0;
         }
 
-        // .history-message {
-        //     margin-bottom: 10px;
-        // }
     }
 
     .clear-history {

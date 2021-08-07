@@ -160,6 +160,10 @@ body::before {
   font-weight: 100;
 }
 
+.city-menu .search-city-wrapper #search.error-handling {
+  border-bottom: 1px solid red;
+}
+
 .city-menu .search-city-wrapper #find {
   all: unset;
   outline: 1px solid rgba(255, 255, 255, 0.212);

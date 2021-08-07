@@ -56,11 +56,9 @@ function spanMessageHandler() {
   const historyCitySection = document.querySelector("#history-city-section");
   const spanMessageWrapper = document.querySelector(".span-message-wrapper");
 
-  if (historyCitySection.childNodes.length == "0") {
-    spanMessageWrapper.innerHTML = `<span class="span-message">no history found</span>`;
-  } else {
-    spanMessageWrapper.innerHTML = `<span class="span-message">your history</span>`;
-  }
+  historyCitySection.childNodes.length == "0"
+    ? (spanMessageWrapper.innerHTML = `<span class="span-message">no history found</span>`)
+    : (spanMessageWrapper.innerHTML = `<span class="span-message">your history</span>`);
 }
 
 //? LOCAL STORAGE
@@ -85,7 +83,6 @@ function localStorageSave(city) {
   cityLink.innerText = city;
   historyCitySection.appendChild(cityLink);
   citySelection();
-  // errorHandling(historyCitySection, cityLink);
 }
 
 function searchHistoryUI(searchedCities) {
@@ -109,11 +106,9 @@ function searchHistoryUI(searchedCities) {
 
   spanMessageHandler();
 
-  if (historyCitySection.childNodes.length == "0") {
-    chosenCity = `London`;
-  } else {
-    chosenCity = searchedCities[searchedCities.length - 1];
-  }
+  historyCitySection.childNodes.length == "0"
+    ? (chosenCity = `London`)
+    : (chosenCity = searchedCities[searchedCities.length - 1]);
 
   fetchCity();
 }
@@ -152,6 +147,8 @@ async function fetchCity() {
     );
     const result = await temp.json();
 
+    searchField.classList.remove("error-handling");
+
     output.innerHTML = `
     <h1>${data.name}</h1> 
     <h2>${result.list[0].main.temp} &deg;</h2>
@@ -177,7 +174,13 @@ async function fetchCity() {
     </div>
     `;
   } catch (error) {
-    console.error("ENTER A VALID CITY", error);
+    if (error) {
+      searchField.classList.add("error-handling");
+      citiesMenu.classList.add("active");
+    } else {
+      searchField.classList.remove("error-handling");
+      citiesMenu.classList.remove("active");
+    }
   }
 }
 
