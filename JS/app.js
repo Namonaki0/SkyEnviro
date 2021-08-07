@@ -177,6 +177,7 @@ async function fetchCity() {
     if (error) {
       searchField.classList.add("error-handling");
       citiesMenu.classList.add("active");
+      searchField.placeholder = "enter a valid city";
     } else {
       searchField.classList.remove("error-handling");
       citiesMenu.classList.remove("active");
@@ -189,7 +190,7 @@ document.addEventListener("DOMContentLoaded", fetchCity);
 //? MENU BEHAVIOUR
 const citiesMenu = document.querySelector(".city-menu");
 const menuIcon = document.querySelector(".fa-chevron-down");
-const closeMenu = document.querySelector(".fa-times");
+const closeMenu = document.querySelector(".fa-chevron-up");
 
 menuIcon.addEventListener("click", () => {
   citiesMenu.classList.add("active");
@@ -207,7 +208,7 @@ if ("serviceWorker" in navigator) {
     .register("sw.js")
     .then((registration) => {
       console.log("SW registered");
-      console.log(registration);
+      // console.log(registration);
     })
     .catch((error) => {
       console.error("SW Registration failed!");

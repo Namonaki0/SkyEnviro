@@ -77,6 +77,29 @@ body::before {
     opacity: 0;
     max-width: 500px;
 
+    &::before {
+        content: "";
+        display: table-cell;
+        width: 300px;
+        height: 300px;
+        z-index: -1;
+        background: rgba(255, 255, 255, 0.068);
+        animation: menubgloop 200s linear infinite;
+        position: absolute;
+        left: -30px;
+        bottom: -30px;
+
+         @keyframes menubgloop {
+             0% {
+                 -webkit-transform: rotate(0);
+             }
+
+             100% {
+                 -webkit-transform: rotate(360deg)
+             }
+         }
+    }
+
     &.active {
         opacity: 1;
         transform: translateY(0%);
@@ -86,7 +109,7 @@ body::before {
         pointer-events: none;
     }
 
-    .fa-times {
+    .fa-chevron-up {
         position: absolute;
         top: 15px;
         right: 20px;
@@ -95,7 +118,6 @@ body::before {
     }
 
     .span-message-wrapper {
-        // background: red;
         width: 100%;
         text-align: right;
         margin-right: 30px;
@@ -134,14 +156,19 @@ body::before {
             &.error-handling {
                 border-bottom: 1px solid red;
             }
+
+            &.error-handling-message {
+                background: red;
+                display: block;
+            }
         }
 
         #find {
             all: unset;
             outline: 1px solid rgba(255, 255, 255, 0.212);
-            padding: 5px 20px;
+            padding: 5px 0;
             cursor: pointer;
-            width: 90%;
+            width: 100%;
             margin-top: 10px;
             text-align: center;
             transition: all 150ms linear;
@@ -182,18 +209,18 @@ body::before {
     .clear-history {
         width: 65%;
         margin-bottom: 30px;
-        padding: 5px 10px;
+        padding: 8px 10px;
         cursor: pointer;
         border: none;
         font-size: $font-size-text;
-        color: #1c1c1c;
-        box-shadow: 0 0 1px rgba(0,0,0,.8);
+        color: white;
+        border-radius: 2px;
         transition: all 150ms linear;
+        background: #37428dc9;
 
         &:hover,
         &:focus {
-            background: rgba(255, 0, 0, 0.767);
-            color: white;
+            background: rgba(255, 0, 0, 0.658);
         }
     }
 }

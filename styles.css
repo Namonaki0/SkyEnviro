@@ -89,6 +89,38 @@ body::before {
   max-width: 500px;
 }
 
+.city-menu::before {
+  content: "";
+  display: table-cell;
+  width: 300px;
+  height: 300px;
+  z-index: -1;
+  background: rgba(255, 255, 255, 0.068);
+  -webkit-animation: menubgloop 200s linear infinite;
+          animation: menubgloop 200s linear infinite;
+  position: absolute;
+  left: -30px;
+  bottom: -30px;
+}
+
+@-webkit-keyframes menubgloop {
+  0% {
+    -webkit-transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes menubgloop {
+  0% {
+    -webkit-transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
 .city-menu.active {
   opacity: 1;
   -webkit-transform: translateY(0%);
@@ -99,7 +131,7 @@ body::before {
   pointer-events: none;
 }
 
-.city-menu .fa-times {
+.city-menu .fa-chevron-up {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -164,12 +196,17 @@ body::before {
   border-bottom: 1px solid red;
 }
 
+.city-menu .search-city-wrapper #search.error-handling-message {
+  background: red;
+  display: block;
+}
+
 .city-menu .search-city-wrapper #find {
   all: unset;
   outline: 1px solid rgba(255, 255, 255, 0.212);
-  padding: 5px 20px;
+  padding: 5px 0;
   cursor: pointer;
-  width: 90%;
+  width: 100%;
   margin-top: 10px;
   text-align: center;
   -webkit-transition: all 150ms linear;
@@ -213,20 +250,19 @@ body::before {
 .city-menu .clear-history {
   width: 65%;
   margin-bottom: 30px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   cursor: pointer;
   border: none;
   font-size: 20px;
-  color: #1c1c1c;
-  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
-          box-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 2px;
   -webkit-transition: all 150ms linear;
   transition: all 150ms linear;
+  background: #37428dc9;
 }
 
 .city-menu .clear-history:hover, .city-menu .clear-history:focus {
-  background: rgba(255, 0, 0, 0.767);
-  color: white;
+  background: rgba(255, 0, 0, 0.658);
 }
 
 #output {

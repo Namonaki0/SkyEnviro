@@ -3,7 +3,7 @@
     "short_name": "SkyEnviro",
     "start_url": ".",
     "background_color": "#fff",
-    "theme_color": "#0000ff",
+    "theme_color": "#5466DF",
     "display": "standalone", 
     "prefer_related_applications": true,
     "icons": [
