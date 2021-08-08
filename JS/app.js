@@ -1,11 +1,14 @@
 import { apiKey } from "./key.js";
 
+//? GLOBAL
 const output = document.getElementById("output");
 const searchField = document.querySelector("#search");
 const findBtn = document.querySelector("#find");
 const historyCitySection = document.querySelector("#history-city-section");
 const key = apiKey;
 let chosenCity = `London`;
+
+let myStorage = window.localStorage;
 
 //? DOCUMENT LOADS ALL LINKS
 document.addEventListener("DOMContentLoaded", citySelection);
@@ -73,8 +76,10 @@ function localStorageSave(city) {
   searchedCities.push(city);
   localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
   createHistoryElement(city);
+  console.log(localStorage);
 }
 
+//? FETCHES ELEMENTS IN LOCAL STORAGE FOR UI
 function searchHistoryUI(searchedCities) {
   if (localStorage.getItem("searchedCities") === null) {
     searchedCities = [];
@@ -109,6 +114,11 @@ function createHistoryElement(city) {
   citySelection();
 }
 
+// function createHistoryElementError(lastEl) {
+//   historyCitySection.removeChild(lastEl);
+//   console.log(lastEl);
+// }
+
 //? CLEAR SEARCH HISTORY
 const clearHistoryBtn = document
   .querySelector(".clear-history")
@@ -132,7 +142,14 @@ async function fetchCity() {
     const api = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${chosenCity}&appid=${key}`
     );
+
     const data = await api.json();
+
+    if (!api.ok) {
+      let searchedCities;
+      searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
+      searchedCities.pop();
+    }
 
     const temp = await fetch(
       `https://api.openweathermap.org/data/2.5/find?q=${chosenCity}&units=metric&appid=${key}`
