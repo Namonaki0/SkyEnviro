@@ -3,6 +3,7 @@ import { apiKey } from "./key.js";
 const output = document.getElementById("output");
 const searchField = document.querySelector("#search");
 const findBtn = document.querySelector("#find");
+const historyCitySection = document.querySelector("#history-city-section");
 const key = apiKey;
 let chosenCity = `London`;
 
@@ -53,7 +54,6 @@ if (findCityBtn) {
 
 //? HISTORY SPAN MESSAGE
 function spanMessageHandler() {
-  const historyCitySection = document.querySelector("#history-city-section");
   const spanMessageWrapper = document.querySelector(".span-message-wrapper");
 
   historyCitySection.childNodes.length == "0"
@@ -72,21 +72,10 @@ function localStorageSave(city) {
   }
   searchedCities.push(city);
   localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
-
-  const historyCitySection = document.querySelector("#history-city-section");
-
-  const cityLink = document.createElement("a");
-  cityLink.classList.add("city");
-  cityLink.setAttribute(`data-target`, `${city}`);
-  cityLink.setAttribute("data-city", "");
-  cityLink.setAttribute("href", "#");
-  cityLink.innerText = city;
-  historyCitySection.appendChild(cityLink);
-  citySelection();
+  createHistoryElement(city);
 }
 
 function searchHistoryUI(searchedCities) {
-  const historyCitySection = document.querySelector("#history-city-section");
   if (localStorage.getItem("searchedCities") === null) {
     searchedCities = [];
   } else {
@@ -94,14 +83,7 @@ function searchHistoryUI(searchedCities) {
   }
 
   searchedCities.forEach((searchedCity) => {
-    const cityLink = document.createElement("a");
-    cityLink.classList.add("city");
-    cityLink.setAttribute(`data-target`, `${searchedCity}`);
-    cityLink.setAttribute("data-city", "");
-    cityLink.setAttribute("href", "#");
-    cityLink.innerText = searchedCity;
-    historyCitySection.appendChild(cityLink);
-    citySelection();
+    createHistoryElement(searchedCity);
   });
 
   spanMessageHandler();
@@ -115,6 +97,18 @@ function searchHistoryUI(searchedCities) {
 
 window.addEventListener("DOMContentLoaded", searchHistoryUI);
 
+//? CREATES SEARCH HISTORY ELEMENT
+function createHistoryElement(city) {
+  const cityLink = document.createElement("a");
+  cityLink.classList.add("city");
+  cityLink.setAttribute(`data-target`, `${city}`);
+  cityLink.setAttribute("data-city", "");
+  cityLink.setAttribute("href", "#");
+  cityLink.innerText = city;
+  historyCitySection.appendChild(cityLink);
+  citySelection();
+}
+
 //? CLEAR SEARCH HISTORY
 const clearHistoryBtn = document
   .querySelector(".clear-history")
@@ -127,8 +121,6 @@ const clearHistoryBtn = document
       historyCitySection.innerText = "";
       localStorage.clear();
     }
-
-    const historyCitySection = document.querySelector("#history-city-section");
     clearSearchHistory(historyCitySection);
     spanMessageHandler();
   });
@@ -181,6 +173,7 @@ async function fetchCity() {
     } else {
       searchField.classList.remove("error-handling");
       citiesMenu.classList.remove("active");
+      searchField.placeholder = "search city...";
     }
   }
 }
