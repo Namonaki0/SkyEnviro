@@ -47,7 +47,7 @@ if (findCityBtn) {
     citiesMenu.classList.remove("active");
     menuIcon.style.display = "";
 
-    fetchCity();
+    fetchCity(searchInput);
     localStorageSave(searchInput);
     spanMessageHandler();
   });
@@ -76,7 +76,6 @@ function localStorageSave(city) {
   searchedCities.push(city);
   localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
   createHistoryElement(city);
-  console.log(localStorage);
 }
 
 //? FETCHES ELEMENTS IN LOCAL STORAGE FOR UI
@@ -114,11 +113,6 @@ function createHistoryElement(city) {
   citySelection();
 }
 
-// function createHistoryElementError(lastEl) {
-//   historyCitySection.removeChild(lastEl);
-//   console.log(lastEl);
-// }
-
 //? CLEAR SEARCH HISTORY
 const clearHistoryBtn = document
   .querySelector(".clear-history")
@@ -146,17 +140,17 @@ async function fetchCity() {
     const data = await api.json();
 
     if (!api.ok) {
-      console.dir(data);
-      // let searchedCities;
-      // searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
-      // const lastEl = searchedCities[searchedCities.length - 1];
-      // console.log(lastEl);
-      // const cityLink = document.createElement("a");
-      // cityLink.setAttribute("class", "city-error");
-      // historyCitySection.appendChild(cityLink);
+      let searchedCities;
 
-      // console.log(searchedCities);
-      // console.log(historyCitySection);
+      if (localStorage.getItem("searchedCities") === null) {
+        searchedCities = [];
+      } else {
+        searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
+      }
+
+      searchedCities.splice(1, 1);
+      historyCitySection.lastChild.remove();
+      console.log(searchedCities);
     }
 
     const temp = await fetch(
