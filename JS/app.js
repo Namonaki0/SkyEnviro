@@ -146,9 +146,17 @@ async function fetchCity() {
     const data = await api.json();
 
     if (!api.ok) {
-      let searchedCities;
-      searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
-      searchedCities.pop();
+      console.dir(data);
+      // let searchedCities;
+      // searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
+      // const lastEl = searchedCities[searchedCities.length - 1];
+      // console.log(lastEl);
+      // const cityLink = document.createElement("a");
+      // cityLink.setAttribute("class", "city-error");
+      // historyCitySection.appendChild(cityLink);
+
+      // console.log(searchedCities);
+      // console.log(historyCitySection);
     }
 
     const temp = await fetch(
