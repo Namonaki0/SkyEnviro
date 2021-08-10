@@ -8,7 +8,7 @@ const historyCitySection = document.querySelector("#history-city-section");
 const key = apiKey;
 let chosenCity = `London`;
 
-let myStorage = window.localStorage;
+// let searchedCities = localStorage;
 
 //? DOCUMENT LOADS ALL LINKS
 document.addEventListener("DOMContentLoaded", citySelection);
@@ -76,6 +76,7 @@ function localStorageSave(city) {
   searchedCities.push(city);
   localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
   createHistoryElement(city);
+  localStorageDelete(city);
 }
 
 //? FETCHES ELEMENTS IN LOCAL STORAGE FOR UI
@@ -113,6 +114,23 @@ function createHistoryElement(city) {
   citySelection();
 }
 
+function localStorageDelete(cod) {
+  let searchedCities;
+
+  if (localStorage.getItem("searchedCities") === null) {
+    searchedCities = [];
+  } else {
+    searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
+  }
+
+  // if (cod === 404) {
+  const lastEl = searchedCities[searchedCities.length - 1];
+  searchedCities.splice(searchedCities.indexOf(lastEl), 1);
+  localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+  // }
+  console.log(searchedCities);
+}
+
 //? CLEAR SEARCH HISTORY
 const clearHistoryBtn = document
   .querySelector(".clear-history")
@@ -140,17 +158,9 @@ async function fetchCity() {
     const data = await api.json();
 
     if (!api.ok) {
-      let searchedCities;
-
-      if (localStorage.getItem("searchedCities") === null) {
-        searchedCities = [];
-      } else {
-        searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
-      }
-
-      searchedCities.splice(1, 1);
+      const { cod, message } = data;
       historyCitySection.lastChild.remove();
-      console.log(searchedCities);
+      localStorageDelete(cod);
     }
 
     const temp = await fetch(
