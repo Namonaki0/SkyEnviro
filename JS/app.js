@@ -8,8 +8,6 @@ const historyCitySection = document.querySelector("#history-city-section");
 const key = apiKey;
 let chosenCity = `London`;
 
-// let searchedCities = localStorage;
-
 //? DOCUMENT LOADS ALL LINKS
 document.addEventListener("DOMContentLoaded", citySelection);
 
@@ -76,7 +74,6 @@ function localStorageSave(city) {
   searchedCities.push(city);
   localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
   createHistoryElement(city);
-  localStorageDelete(city);
 }
 
 //? FETCHES ELEMENTS IN LOCAL STORAGE FOR UI
@@ -114,6 +111,7 @@ function createHistoryElement(city) {
   citySelection();
 }
 
+//? DELETE INEXISTENT CITY FROM LOCAL STORAGE
 function localStorageDelete(cod) {
   let searchedCities;
 
@@ -123,12 +121,11 @@ function localStorageDelete(cod) {
     searchedCities = JSON.parse(localStorage.getItem("searchedCities"));
   }
 
-  // if (cod === 404) {
-  const lastEl = searchedCities[searchedCities.length - 1];
-  searchedCities.splice(searchedCities.indexOf(lastEl), 1);
-  localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
-  // }
-  console.log(searchedCities);
+  if (cod) {
+    const lastEl = searchedCities[searchedCities.length - 1];
+    searchedCities.splice(searchedCities.indexOf(lastEl), 1);
+    localStorage.setItem("searchedCities", JSON.stringify(searchedCities));
+  }
 }
 
 //? CLEAR SEARCH HISTORY
